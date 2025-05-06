@@ -82,3 +82,14 @@ export const checkAuth = catchAsync(async (req, res) => {
 
   res.json({ role, user: req.user });
 });
+
+export const checkToken = catchAsync(async (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token)
+    return res.status(401).json({ status: "error", message: "No token found" });
+
+  return res
+    .status(200)
+    .json({ status: "success", message: "successfully authenicated" });
+});

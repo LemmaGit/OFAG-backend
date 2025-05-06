@@ -29,8 +29,7 @@ import {
   uploadMiddleware,
 } from "../controllers/uploadController.js";
 const patronRouter = Router();
-//
-patronRouter.get("/me", checkToken);
+
 patronRouter.get(
   "/",
   protect(Patron, ["manager", "librarian"]),

@@ -10,11 +10,12 @@ import librarianRouter from "./routes/librarianRoute.js";
 import "./scheduler/bookHoldExpireDateChecker.js";
 import "./scheduler/overdueChecker.js";
 import globalErrorHandler from "./error/globalErrorHandler.js";
-import { checkAuth } from "./controllers/authController.js";
+import { checkAuth, checkToken } from "./controllers/authController.js";
 import { loginUser, logout, protect } from "./helpers.js";
 import Patron from "./model/patron.js";
 import Librarian from "./model/librarian.js";
 import settingsRouter from "./routes/settings.js";
+import AppError from "./error/appError.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
@@ -41,8 +42,9 @@ app.route("/api/logout").patch(logout);
 app
   .route("/api/check-auth")
   .get(protect([Patron, Librarian], undefined, undefined, true), checkAuth);
-// app.all("*", (req, _, next) => {
-//   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
-// });
+app.route("/api/me").get(checkToken);
+app.all("*", (req, _, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+});
 app.use(globalErrorHandler);
 export default app;

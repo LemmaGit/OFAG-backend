@@ -46,16 +46,7 @@ export function generateToken(user, statusCode, res, role, isSignUp = false) {
 
   return token;
 }
-export const checkToken = catchAsync(async (req, res) => {
-  const token = req.cookies.token;
 
-  if (!token)
-    return res.status(401).json({ status: "error", message: "No token found" });
-
-  return res
-    .status(200)
-    .json({ status: "success", message: "successfully authenicated" });
-});
 export const changedPasswordAfter = function (passwordChangedAt, JWTTimestamp) {
   if (passwordChangedAt) {
     const changedTimestamp = passwordChangedAt.getTime() / 1000;
