@@ -46,7 +46,7 @@ await db();
 mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection lost:", err);
 });
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT || 5000, () => {
   console.log(`Server running on port ${process.env.PORT} ✈️`);
 });
 
