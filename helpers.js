@@ -37,6 +37,7 @@ export function generateToken(user, statusCode, res, role, isSignUp = false) {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
+      sameSite: "None",
       maxAge: +process.env.COOKIE_MAX_AGE,
     });
     return res
@@ -54,16 +55,6 @@ export const changedPasswordAfter = function (passwordChangedAt, JWTTimestamp) {
   }
   return false;
 };
-// export const loginUser = (Model, role) =>
-//   catchAsync(async (req, res, next) => {
-//     const { error, value } = validateLogin(req.body);
-//     if (error) return next(AppError.fromValidationError(error));
-//     const user = await Model.login(value);
-//     if (!user) return next(new AppError("Incorrect email or password"));
-//     if (user?.status !== "verified")
-//       return next(new AppError("You account is not verified"));
-//     return generateToken(user, 200, res, role);
-//   });
 
 export const loginUser = catchAsync(async (req, res, next) => {
   const { error, value } = validateLogin(req.body);
