@@ -1,0 +1,60 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Email Verified
+    style.
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        text-align: center;
+        max-width: 500px;
+      }
+      h1 {
+        color: #4a6fa5;
+        margin: 20px 0 10px;
+      }
+      p {
+        margin-bottom: 25px;
+        color: #555;
+      }
+      .button {
+        display: inline-block;
+        background-color: #4a6fa5;
+        color: white;
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 5px;
+        font-weight: 600;
+        margin: 5px;
+      }
+      .secondary {
+        background: white;
+        color: #4a6fa5;
+        border: 1px solid #4a6fa5;
+      }
+
+  body
+    .container
+      svg(xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="#4a6fa5")
+        path(d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z")
+      
+      h1 Email Verified Successfully!
+      p Your account is now active and ready to use.
+
+      div(style="margin-top: 30px;")
+        a.button(href="http://localhost:5173/login") Log In
+        
