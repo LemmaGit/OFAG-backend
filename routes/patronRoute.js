@@ -19,7 +19,6 @@ import {
   changePassword,
   getOne,
   getAll,
-  checkToken,
   updateProfile,
 } from "../helpers.js";
 import Patron from "../model/patron.js";
