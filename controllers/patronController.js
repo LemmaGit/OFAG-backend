@@ -1,4 +1,4 @@
-import Patron from "../model/Patron.js";
+import Patron from "../model/patron.js";
 import Request from "../model/request.js";
 import fetch from "node-fetch";
 import {

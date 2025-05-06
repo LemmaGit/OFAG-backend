@@ -7,7 +7,7 @@ import {
   removeEntity,
   updateProfile,
 } from "../helpers.js";
-import Patron from "../model/Patron.js";
+import Patron from "../model/patron.js";
 import Book from "../model/book.js";
 import {
   AcceptOrRejectRequest,

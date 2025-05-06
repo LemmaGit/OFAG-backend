@@ -1,5 +1,5 @@
 import { validateAddNewBook, validateEditBook } from "../schema/book.js";
-import Book from "../model/Book.js";
+import Book from "../model/book.js";
 import catchAsync from "../util/catchAsync.js";
 import AppError from "../error/appError.js";
 import { validateId } from "../schema/ID.js";

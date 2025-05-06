@@ -9,7 +9,7 @@ import sendEmail from "./email.js";
 import { validateId } from "./schema/ID.js";
 import AppError from "./error/appError.js";
 import catchAsync from "./util/catchAsync.js";
-import Patron from "./model/Patron.js";
+import Patron from "./model/patron.js";
 import Librarian from "./model/librarian.js";
 import BookReservation from "./model/bookReservation.js";
 import { validateUpdateProfile } from "./schema/common.js";

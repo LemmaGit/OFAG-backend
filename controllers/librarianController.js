@@ -22,7 +22,7 @@ import {
 } from "../schema/bookIssue.js";
 import catchAsync from "../util/catchAsync.js";
 import AppError from "../error/appError.js";
-import Patron from "../model/Patron.js";
+import Patron from "../model/patron.js";
 import { validateRegisterPatron } from "../schema/patron.js";
 import { validateUpdateProfile } from "../schema/common.js";
 import dayjs from "dayjs";

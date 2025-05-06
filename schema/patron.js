@@ -24,24 +24,5 @@ const patronSchema = Joi.object({
   avatar: Joi.string().uri().optional(),
   status: Joi.string().default("unverified"),
 });
-// const updateProfile = Joi.object({
-//   firstName: Joi.string()
-//     .min(2)
-//     .max(50)
-//     .pattern(/^[A-Za-z]+$/)
-//     .required()
-//     .messages({
-//       "string.pattern.base": "Name should only contain letters",
-//     }),
-//   lastName: Joi.string()
-//     .min(2)
-//     .max(50)
-//     .pattern(/^[A-Za-z]+$/)
-//     .required()
-//     .messages({
-//       "string.pattern.base": "Name should only contain letters",
-//     }),
-//   username: Joi.string().alphanum().min(3).max(30).required(),
-// });
-// export const validateUpdateProfile = validator(updateProfile);
+
 export const validateRegisterPatron = validator(patronSchema);
