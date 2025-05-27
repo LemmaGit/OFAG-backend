@@ -199,19 +199,20 @@ export const signup = (Model, validatorFun) =>
     const url = `${req.protocol}://${req.get(
       "host"
     )}/api/${modelString}/signup/${token}`;
-    try {
-      await sendEmail({
-        email: newUser.email,
-        subject: "Confirm Your OFAG Library Account",
-        libraryName: "OFAG Library",
-        confirmationUrl: url,
-        name: newUser.firstName,
-      });
-    } catch (error) {
-      await Model.findByIdAndDelete(newUser._id);
-      return next(new AppError("Failed to send email"));
-    }
-    res.status(200).json({ message: "Successfuly Registered", url });
+
+    await sendEmail({
+      email: newUser.email,
+      subject: "Confirm Your DBU HUB Account",
+      libraryName: "OFAG Library",
+      confirmationUrl: url,
+      name: newUser.firstName,
+    });
+    // await Model.findByIdAndDelete(newUser._id);
+    res.status(200).json({
+      status: "success",
+      message:
+        "Registration successful. Please check your email to confirm your account.",
+    });
   });
 export const confirmSuccessfulSignup = (Model) =>
   catchAsync(async (req, res) => {
@@ -232,14 +233,20 @@ export const confirmSuccessfulSignup = (Model) =>
       secure: true,
       maxAge: +process.env.COOKIE_MAX_AGE,
     });
-    res.status(200).render("email-confirmed", {
-      user: {
-        name: user.firstName,
-        email: user.email,
-      },
-      libraryName: "OFAG Library",
-    });
-    // res.status(200).json({ user });
+    res.send(`
+      <html>
+        <head>
+          <title>Email Verified</title>
+          <meta http-equiv="refresh" content="0; url=${process.env.FRONTEND_URL}/login" />
+        </head>
+        <body>
+          <p>Email successfully verified. Redirecting...</p>
+          <script>
+            window.location.href = "${process.env.FRONTEND_URL}/login";
+          </script>
+        </body>
+      </html>
+    `);
   });
 export const getRecentAll = (Model, daysFromNow = 7, fieldToCompare) =>
   catchAsync(async (req, res) => {

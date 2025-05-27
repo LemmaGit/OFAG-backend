@@ -68,7 +68,7 @@ librarianRouter.get(
 );
 librarianRouter.get("/all-books", protect(Librarian), getAll(Book));
 librarianRouter.get("/all-patrons", protect(Librarian), getPatrons);
-librarianRouter.get("/requests", protect(Librarian, [], true), getRequests);
+librarianRouter.get("/requests", protect(Librarian), getRequests);
 librarianRouter.get(
   "/all-librarian",
   protect(Librarian, [], true),
@@ -131,9 +131,9 @@ librarianRouter.patch(
 );
 librarianRouter.patch(
   "/requests/:id",
-  protect(Librarian, [], true),
+  protect(Librarian),
   AcceptOrRejectRequest
 );
 
-librarianRouter.patch("/signup/:token", confirmSignUp);
+librarianRouter.get("/signup/:token", confirmSignUp);
 export default librarianRouter;

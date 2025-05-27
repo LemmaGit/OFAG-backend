@@ -6,6 +6,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import bookRouter from "./routes/bookRoute.js";
 import patronRouter from "./routes/patronRoute.js";
+import uploadedBookRouter from "./routes/uploadedBookRoute.js";
 import librarianRouter from "./routes/librarianRoute.js";
 import "./scheduler/bookHoldExpireDateChecker.js";
 import "./scheduler/overdueChecker.js";
@@ -33,6 +34,7 @@ app.set("views", path.join(__dirname, "views")); // Points to /views folder
 app.set("view engine", "pug");
 // Mounted Routes
 app.use("/api/books", bookRouter);
+app.use("/api/uploaded-books", uploadedBookRouter);
 app.use("/api/patrons", patronRouter);
 app.use("/api/librarians", librarianRouter);
 app.use("/api/settings", settingsRouter);

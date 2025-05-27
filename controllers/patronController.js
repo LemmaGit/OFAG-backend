@@ -141,12 +141,12 @@ export const getCheckedOutBooks = catchAsync(async (req, res) => {
     })
     .lean();
   const checkedoutBooksByPatron = result.map(
-    ({ checkedoutBy, bookId, overdueDays, overdueFinePerDay, ...rest }) => ({
+    ({ checkedoutBy, bookId, overdueDays, ...rest }) => ({
       ...rest,
       librarianFullName: `${checkedoutBy.firstName} ${checkedoutBy.lastName}`,
       bookTitle: bookId.title,
       status: overdueDays > 0 ? "overdue" : "not overdue",
-      overduefee: overdueDays ? overdueFinePerDay * overdueDays : 0,
+      overduefee: overdueDays ? rest.overdueFinePerDay * overdueDays : 0,
     })
   );
   return res.status(200).json({ books: checkedoutBooksByPatron });

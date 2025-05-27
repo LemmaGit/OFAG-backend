@@ -158,6 +158,7 @@ export function checkoutAggregation() {
         librarianFullName: 1,
         status: 1,
         overdueFee: 1,
+        overdueFinePerDay: 1,
         bookConditionWhenCheckedout: 1,
         // bookConditionWhenCheckedin: 1,
         paymentStatus: 1,

@@ -4,11 +4,12 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Confirm Your #{universityHub} Account
     style(type="text/css").
       body {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         line-height: 1.6;
-        color: #333333;
+        color: #333;
         background-color: #f7f9fc;
         margin: 0;
         padding: 0;
@@ -19,7 +20,7 @@ html(lang="en")
         padding: 40px 20px;
       }
       .email-content {
-        background: #ffffff;
+        background: #fff;
         padding: 40px;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -30,6 +31,7 @@ html(lang="en")
         font-size: 24px;
         margin-top: 0;
         margin-bottom: 25px;
+        font-weight: 600;
       }
       p {
         font-size: 16px;
@@ -39,41 +41,32 @@ html(lang="en")
       .confirmation-button {
         display: inline-block;
         background: #4a6fa5;
-        color: #ffffff !important;
+        color: #fff !important;
         text-decoration: none;
-        padding: 12px 30px;
+        padding: 14px 32px;
         border-radius: 6px;
         font-weight: 600;
+        font-size: 16px;
         margin: 20px 0;
-        transition: background-color 0.3s;
+        transition: all 0.3s ease;
       }
       .confirmation-button:hover {
         background: #3a5683;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
       }
-      .small-text {
+      .footer-text {
         font-size: 14px;
         color: #718096;
-        margin-top: 30px;
+        margin-top: 40px;
       }
-      .hidden-form {
-         display: none; 
-         }
   body
     .email-container
       .email-content
-        h1 Confirm Your Email Address
-        p Thank you for registering with #{libraryName}. To complete your registration and start exploring our collection, please confirm your email address.
+        h1 Almost There!
+        p Click the button below to confirm your email address and activate your #{libraryName} account.
         
-        button.confirmation-button(
-          type="button"
-          onclick="document.getElementById('confirmForm').submit()"
-        ) Confirm My Account
+        a.confirmation-button(href=confirmationUrl) Confirm My Email
 
-        form.hidden-form(
-          id="confirmForm"
-          method="POST"
-          action=confirmationUrl
-        )
-          input(type="hidden" name="_method" value="PATCH")
-        
-        p.small-text If you did not create an account with #{libraryName}, please ignore this email.
+        p.footer-text
+          | If you didn't request this account, please ignore this email.

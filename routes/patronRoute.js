@@ -68,7 +68,7 @@ patronRouter.patch(
   changePassword("patron")
 );
 
-patronRouter.patch("/signup/:token", confirmSignUp);
+patronRouter.get("/signup/:token", confirmSignUp);
 patronRouter.patch(
   "/update-profile",
   protect(Patron),
