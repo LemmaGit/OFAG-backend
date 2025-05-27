@@ -26,3 +26,21 @@ export const uploadToCloudinary = async (buffer, folder = "uploads") => {
     throw error;
   }
 };
+export const uploadPDFToCloudinary = async (buffer, mimetype) => {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream(
+        {
+          resource_type: "raw",
+          folder: "pdfs", // optional folder
+          format: "pdf",
+          type: "upload", // ensures it's public
+        },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      )
+      .end(buffer);
+  });
+};
