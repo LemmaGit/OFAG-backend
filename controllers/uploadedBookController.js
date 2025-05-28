@@ -7,10 +7,7 @@ export const registerUploadedPDF = catchAsync(async (req, res, next) => {
   const data = {
     ...req.body,
     URL: req.pdf_url.secure_url,
-    author: {
-      firstName: "Lemma",
-      lastName: "Getiye",
-    },
+    author: JSON.parse(req.body.author),
   };
   console.log(data);
   const { error, value } = validateAddNewPDF(data);
